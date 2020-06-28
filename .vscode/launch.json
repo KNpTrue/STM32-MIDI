@@ -1,0 +1,62 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "flash+debug",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "flash",
+            "servertype": "openocd",
+            "executable": "./build/USBMIDI-STM32.elf",
+            "device": "STM32F103ZE",
+            "svdFile": "tools/svd/STM32F103.svd",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/stm32f1x.cfg"
+            ],
+            "swoConfig":{
+                "enabled":false,
+                "source":"probe",
+                "swoFrequency": 1000000,
+                "cpuFrequency": 72000000,
+                "decoders": [
+                    {
+                        "port": 0,
+                        "type": "console",
+                        "label": "SWO output",
+                        "encoding":"ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "DEBUG",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "servertype": "openocd",
+            "executable": "build/USBMIDI-STM32.elf",
+            "device": "STM32F103ZE",
+            "svdFile": "tools/svd/STM32F103.svd",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/stm32f1x.cfg"
+            ],
+            "swoConfig":{
+                "enabled":false,
+                "source":"probe",
+                "swoFrequency": 1000000,
+                "cpuFrequency": 72000000,
+                "decoders": [
+                    {
+                        "port": 0,
+                        "type": "console",
+                        "label": "SWO output",
+                        "encoding":"ascii"
+                    }
+                ]
+            }
+        }
+    ]
+}
